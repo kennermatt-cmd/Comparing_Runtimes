@@ -11,10 +11,36 @@ Thanks for contributing! This guide will help you get set up and follow best pra
 
 ## Getting Started
 
-Clone the repository:
+### 1. Check for existing SSH Key:
+```bash
+ls -al ~/.ssh
+```
+### 2. Generate a new SSH key (if needed)
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+Press enter *3 for defaults  
+### 3. Copy your public key to clipboard
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+### 4. Add your key to GitHub
+Go to your GitHub account → Settings
+
+Navigate to SSH and GPG keys
+
+Click New SSH key
+
+Paste your copied key and give it a name (like "my-laptop")
+
+### 5. Test your SSH connection
+```bash
+ssh -T git@github.com
+```
+### 6. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Comparing_Runtimes.git
+git clone git@github.com:kennermatt-cmd/Comparing_Runtimes.git
 cd Comparing_Runtimes
 ```
 
@@ -42,6 +68,7 @@ Comparing_Runtimes/
 ### Recommended (Virtual Environment)
 
 ```bash
+cd environments/vm/
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt

@@ -11,7 +11,7 @@ This project benchmarks the performance and setup time of **Merge Sort** and **I
 
 ### 1. Clone the repo and cd in
 ```bash
-git clone git@github.com:your-team/Comparing_Runtimes.git
+git clone git@github.com:kennermatt-cmd/Comparing_Runtimes.git
 cd Comparing_Runtimes
 ```
 ### 2. Run all benchmarks
@@ -66,6 +66,7 @@ We recommend using a virtual environment for clean setup.
 
 ### Option 1: Using `venv` (Recommended)
 ```bash
+cd environments/vm/
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
