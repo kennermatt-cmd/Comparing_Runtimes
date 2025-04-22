@@ -1,9 +1,13 @@
 #!/bin/bash
 
-echo "==== [Native Benchmark - No venv] $(date) ====" >> analysis/setup_times.log
+LOGFILE="data/logs/setup_times.log"
+echo "==== [Native Benchmark - No venv] $(date) ====" >> "$LOGFILE"
 
-echo "📦 [Native] Installing dependencies globally..." | tee -a analysis/setup_times.log
-{ time pip3 install --user -r benchmark/requirements.txt; } 2>> analysis/setup_times.log
+echo "Installing pip3 (system-wide)..." | tee -a "$LOGFILE"
+{ time sudo apt update -qq && sudo apt install -y -qq python3-pip; } 2>> "$LOGFILE"
 
-echo "🚀 [Native] Running benchmark..." | tee -a analysis/setup_times.log
-{ time python3 benchmark/sort_benchmark.py; } 2>> analysis/setup_times.log
+echo "Installing matplotlib using --break-system-packages..." | tee -a "$LOGFILE"
+{ time pip3 install --break-system-packages matplotlib; } 2>> "$LOGFILE"
+
+echo "Running benchmark (native)..." | tee -a "$LOGFILE"
+{ /usr/bin/time -v python3 benchmark/sort_benchmark.py native; } 2>> "$LOGFILE"

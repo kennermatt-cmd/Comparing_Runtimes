@@ -1,0 +1,117 @@
+==== [Native Benchmark - No venv] Tue Apr 22 00:06:18 MDT 2025 ====
+Installing pip3 (system-wide)...
+[1;33mW: [0mFailed to fetch http://archive.ubuntu.com/ubuntu/dists/noble/InRelease  Temporary failure resolving 'archive.ubuntu.com'[0m
+[1;33mW: [0mFailed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease  Temporary failure resolving 'archive.ubuntu.com'[0m
+[1;33mW: [0mFailed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-backports/InRelease  Temporary failure resolving 'archive.ubuntu.com'[0m
+[1;33mW: [0mFailed to fetch http://security.ubuntu.com/ubuntu/dists/noble-security/InRelease  Temporary failure resolving 'security.ubuntu.com'[0m
+[1;33mW: [0mSome index files failed to download. They have been ignored, or old ones used instead.[0m
+
+real	0m17.076s
+user	0m0.008s
+sys	0m0.017s
+Installing matplotlib using --break-system-packages...
+
+real	0m0.799s
+user	0m0.549s
+sys	0m0.054s
+Running benchmark (native)...
+/home/kennerm/Comparing_Runtimes/benchmark/sort_benchmark.py:85: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+	Command being timed: "python3 benchmark/sort_benchmark.py native"
+	User time (seconds): 4.08
+	System time (seconds): 0.09
+	Percent of CPU this job got: 132%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.16
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 121144
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 215
+	Minor (reclaiming a frame) page faults: 30669
+	Voluntary context switches: 528
+	Involuntary context switches: 14
+	Swaps: 0
+	File system inputs: 70784
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== [Docker Benchmark] Tue Apr 22 00:06:55 MDT 2025 ====
+Docker already installed.
+Checking Docker availability...
+Docker is already running.
+Building Docker image...
+
+real	0m29.940s
+user	0m1.154s
+sys	0m1.090s
+Running benchmark in Docker...
+	Command being timed: "docker run --rm -v /home/kennerm/Comparing_Runtimes/data/charts:/app/data/charts sort-benchmark"
+	User time (seconds): 0.00
+	System time (seconds): 0.01
+	Percent of CPU this job got: 0%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 26396
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 7
+	Minor (reclaiming a frame) page faults: 881
+	Voluntary context switches: 637
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 944
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== [VM Benchmark] Tue Apr 22 00:07:51 MDT 2025 ====
+Installing pip3 and venv in VM...
+
+real	0m1.445s
+user	0m0.006s
+sys	0m0.000s
+Creating virtual environment...
+
+real	0m1.194s
+user	0m1.090s
+sys	0m0.042s
+Installing matplotlib in venv...
+
+real	0m5.696s
+user	0m0.377s
+sys	0m0.234s
+Running benchmark in VM using venv...
+/home/kennerm/Comparing_Runtimes/benchmark/sort_benchmark.py:85: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+	Command being timed: "venv/bin/python benchmark/sort_benchmark.py vm"
+	User time (seconds): 3.62
+	System time (seconds): 0.13
+	Percent of CPU this job got: 138%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.71
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 120732
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 176
+	Minor (reclaiming a frame) page faults: 30682
+	Voluntary context switches: 455
+	Involuntary context switches: 6
+	Swaps: 0
+	File system inputs: 51352
+	File system outputs: 48
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
