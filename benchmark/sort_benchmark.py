@@ -62,22 +62,21 @@ def mergeSort(A):
     print(f"[Merge Sort] Comparisons: {total}")
 
 def run_benchmark(env_name="generic"):
-    merge_file = "data/input/rand1000000.txt"
-    insertion_file = "data/input/rand1000.txt"
+    sort_file = "data/input/rand1000.txt"
 
     os.makedirs("data/charts", exist_ok=True)
 
-    merge_data = load_data(merge_file)
-    print(f"Running Merge Sort on {merge_file}...")
+    merge_data = load_data(sort_file)
+    print(f"Running Merge Sort on {sort_file}...")
     merge_time = timeEfficiency(mergeSort, merge_data)
 
-    insertion_data = load_data(insertion_file)
-    print(f"Running Insertion Sort on {insertion_file}...")
+    insertion_data = load_data(sort_file)
+    print(f"Running Insertion Sort on {sort_file}...")
     insertion_time = timeEfficiency(insertionSort, insertion_data)
 
     # Chart output filename
     chart_path = f"data/charts/sort_comparison_{env_name}.png"
-    plt.bar(["Insertion (1K)", "Merge (1M)"], [insertion_time, merge_time])
+    plt.bar(["Insertion O(n^2)", "Merge O(n lg n)"], [insertion_time, merge_time])
     plt.ylabel("Time (seconds)")
     plt.title(f"Sort Benchmark ({env_name.capitalize()})")
     plt.tight_layout()

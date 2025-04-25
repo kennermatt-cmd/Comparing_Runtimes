@@ -23,42 +23,74 @@ bash analysis/resource_trace.sh docker
 
 ```
 ### 3. Generate Charts
+```
 python3 analysis/compare_environments.py
 python3 analysis/parse_results.py
-
-### 4. Project Structure
+```
+## Project Structure
 ```
 Comparing_Runtimes/
-├── benchmark/                  # Benchmark script + sorting logic
-│   └── sort_benchmark.py
-├── analysis/                   # Timing scripts + log parser + visualizer
+├── CONTRIBUTING.md
+├── README.md
+├── analysis                            # Timing scripts + log parser + visualizers
+│   ├── compare_environments.py
+│   ├── compare_insertions.py
 │   ├── docker_benchmark.sh
 │   ├── native_benchmark.sh
-│   ├── vm_benchmark.sh
 │   ├── parse_timings.py
-├── data/
-│   ├── input/                  # rand1000.txt and rand1000000.txt
-│   └── charts/                 # PNG chart outputs
-├── environments/docker/        # Dockerfile and runtime env
-├── report/                     # Final report (PDF)
-├── presentation/               # Final presentation (PPTX)
-└── README.md                   # This file
+│   ├── resource_trace.sh
+│   └── vm_benchmark.sh
+├── benchmark                           # Benchmark script + sorting logic
+│   └── sort_benchmark.py
+├── data
+│   ├── charts                          # PNG chart outputs
+│   │   ├── docker_usage.png
+│   │   ├── native_usage.png
+│   │   ├── sort_comparison_docker.png
+│   │   ├── sort_comparison_native.png
+│   │   ├── sort_comparison_vm.png
+│   │   └── vm_usage.png
+│   ├── input                           # rand1000.txt and rand1000000.txt input files
+│   │   ├── rand1000.txt
+│   │   └── rand1000000.txt
+│   └── logs                            # logs of usage
+│       ├── docker_ps.log
+│       ├── native_ps.log
+│       ├── resource_trace.log
+│       ├── setup_times.log
+│       └── vm_ps.log
+├── environments                        # Dockerfile and runtime env
+│   ├── docker
+│   │   └── Dockerfile
+│   └── vm
+├── presentation                        # Final presentation (PPTX)
+│   └── final_slides.pptx
+├── report                              # Final report (PDF)
+│   └── project_report.pdf
+└── requirements.txt
 ```
 
 ## What Gets Measured
-Each script logs timing to analysis/setup_times.log:
+Each script logs OS resources and timing to analysis/setup_times.log.
+Below is a list of prominent statistics:
 
-- `real`: Wall-clock time
+| Descriptor | Description | Importance |
+|--------|--------|---------|
+| user | CPU time in user-space | Pure CPU cost without OS I/O delays |
+| sys | CPU time in kernel-space | Higher sys = heavier overhead |
+| % CPU used | How effeciently environment used available CPU | Low CPU % = environment overhead|
+| Elapsed time | Wall-clock time | Real time to complete a task |
+| Maximum resident set size | Peak memory usage in KB | Memory Efficiency |
+| Major page faults | Times it had to fetch missing memory from disk. | Higher #s = slower VRAM handling |
+| File system I/O | File system inputs/outputs | Checks for slow disk ops |
+| Context Switches | Process is yielding CPU to other processes | Multitasking responsiveness |
 
-- `user`: CPU time in user-space
-
-- `sys`: CPU time in kernel-space
 
 These are then visualized in:
 
-- data/charts/merge_comparison.png
+- data/charts/sort_comparison.png
 
-- data/charts/merge_sort_env_timing_breakdown.png
+- data/charts/env_timing_breakdown.png
 
 ## Dependencies (for visualizations and logging)
 
@@ -76,7 +108,7 @@ Option 2: System-wide installation (use with caution)
 pip3 install --break-system-packages matplotlib pandas psrecord
 ```
 ## Contributors
-Cassius Kemp
-Matthew Kenner
-Ray Khan
-Paul Kim
+Cassius Kemp  
+Matthew Kenner  
+Ray Khan  
+Paul Kim  
