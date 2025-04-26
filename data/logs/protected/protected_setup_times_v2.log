@@ -1,0 +1,308 @@
+==== [Native Benchmark - No venv] Fri Apr 25 17:13:00 MDT 2025 ====
+Installing pip3 (system-wide)...
+        Command being timed: "sudo apt update -qq"
+        User time (seconds): 0.00
+        System time (seconds): 0.03
+        Percent of CPU this job got: 0%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.69
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 4260
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 1266
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+Installing matplotlib using --break-system-packages...
+        Command being timed: "pip3 install --break-system-packages matplotlib"
+        User time (seconds): 1.32
+        System time (seconds): 0.73
+        Percent of CPU this job got: 96%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.14
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 42604
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 16395
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+Running benchmark (native)...
+/home/greebus/Comparing_Runtimes/venv_ps/lib/python3.12/site-packages/numpy/_core/getlimits.py:551: UserWarning: Signature b'\x00\xd0\xcc\xcc\xcc\xcc\xcc\xcc\xfb\xbf\x00\x00\x00\x00\x00\x00' for <class 'numpy.longdouble'> does not match any known type: falling back to type probe function.
+This warnings indicates broken support for the dtype!
+  machar = _get_machar(dtype)
+        Command being timed: "python3 benchmark/sort_benchmark.py native"
+        User time (seconds): 2.01
+        System time (seconds): 0.65
+        Percent of CPU this job got: 151%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.76
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 54184
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 14382
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+==== [Docker Benchmark] Fri Apr 25 17:16:53 MDT 2025 ====
+Installing Docker...
+        Command being timed: "bash -c
+        sudo apt update -qq &&
+        sudo apt install -y -qq apt-transport-https ca-certificates curl gnupg lsb-release &&
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker.gpg &&
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+        | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null &&
+        sudo apt update -qq &&
+        sudo apt install -y -qq docker-ce docker-ce-cli containerd.io
+    "
+        User time (seconds): 0.35
+        System time (seconds): 0.29
+        Percent of CPU this job got: 0%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 1:37.60
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 8808
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 13558
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+Checking Docker availability...
+Docker not running. Attempting to start Docker Desktop from WSL...
+Start-Process : This command cannot be run due to the error: The system cannot find the file specified.
+At line:1 char:1
++ Start-Process "Docker Desktop" -Verb RunAs
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+
+Command exited with non-zero status 1
+        Command being timed: "bash -c powershell.exe -Command "Start-Process \"Docker Desktop\" -Verb RunAs""
+        User time (seconds): 0.01
+        System time (seconds): 0.00
+        Percent of CPU this job got: 0%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.94
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 1740
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 190
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 1
+Waiting for Docker to become available...
+................................................................................................................................==== [VM Benchmark] Fri Apr 25 17:40:50 MDT 2025 ====
+Installing pip3 and venv in VM...
+        Command being timed: "sudo apt update"
+        User time (seconds): 0.14
+        System time (seconds): 0.43
+        Percent of CPU this job got: 3%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.35
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 20228
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 9535
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+Creating virtual environment...
+        Command being timed: "python3 -m venv venv"
+        User time (seconds): 10.65
+        System time (seconds): 9.65
+        Percent of CPU this job got: 81%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:24.91
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 70460
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 59750
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+Installing matplotlib in venv...
+        Command being timed: "venv/bin/pip install matplotlib"
+        User time (seconds): 29.81
+        System time (seconds): 24.35
+        Percent of CPU this job got: 80%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 1:07.44
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 109748
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 51003
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+Running benchmark in VM using venv...
+/home/greebus/Comparing_Runtimes/venv/lib/python3.12/site-packages/numpy/_core/getlimits.py:551: UserWarning: Signature b'\x00\xd0\xcc\xcc\xcc\xcc\xcc\xcc\xfb\xbf\x00\x00\x00\x00\x00\x00' for <class 'numpy.longdouble'> does not match any known type: falling back to type probe function.
+This warnings indicates broken support for the dtype!
+  machar = _get_machar(dtype)
+        Command being timed: "venv/bin/python benchmark/sort_benchmark.py vm"
+        User time (seconds): 1.81
+        System time (seconds): 0.81
+        Percent of CPU this job got: 146%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.79
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 54228
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 14394
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+==== [Docker Benchmark] Fri Apr 25 18:00:16 MDT 2025 ====
+Docker already installed.
+Checking Docker availability...
+Docker not running. Attempting to start Docker Desktop from WSL...
+Start-Process : This command cannot be run due to the error: The system cannot find the file specified.
+At line:1 char:1
++ Start-Process "Docker Desktop" -Verb RunAs
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+
+Command exited with non-zero status 1
+        Command being timed: "bash -c powershell.exe -Command "Start-Process \"Docker Desktop\" -Verb RunAs""
+        User time (seconds): 0.01
+        System time (seconds): 0.01
+        Percent of CPU this job got: 0%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.32
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 1744
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 237
+        Voluntary context switches: 0
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 1
+Waiting for Docker to become available...
+..................................==== [Docker Benchmark] Fri Apr 25 18:37:50 MDT 2025 ====
+Docker already installed.
+Checking Docker availability...
+Docker is already running.
+Building Docker image...
+Running benchmark in Docker...
+        Command being timed: "docker run --rm -v /home/greebus/Comparing_Runtimes/data/charts:/app/data/charts sort-benchmark"
+        User time (seconds): 0.09
+        System time (seconds): 0.07
+        Percent of CPU this job got: 4%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.42
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total: size (kbytes): 0
+        Maximum resident set size (kbytes): 32176
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 44
+        Minor (reclaiming a frame) page faults: 1576
+        Voluntary context switches: 826
+        Involuntary context switches: 0
+        Swaps: 0
+        File system inputs: 8272
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
